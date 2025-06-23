@@ -13,7 +13,7 @@ const int tiltMin = 30;
 const int tiltMax = 150;
 
 unsigned long laserOffTime = 0;
-const unsigned long laserDuration = 500; // Laser on for 500ms
+const unsigned long laserDuration = 500; 
 
 void setup() {
   panServo.attach(panPin);
@@ -24,7 +24,7 @@ void setup() {
 }
 
 void loop() {
-  // Turn off laser if the duration has elapsed
+ 
   if (millis() >= laserOffTime) {
     digitalWrite(laserPin, LOW);
   }
@@ -43,7 +43,6 @@ void loop() {
       panServo.write(panAngle);
       tiltServo.write(tiltAngle);
 
-      // Activate laser and update turn-off time
       digitalWrite(laserPin, HIGH);
       laserOffTime = millis() + laserDuration;
     }
